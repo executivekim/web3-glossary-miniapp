@@ -9,9 +9,9 @@
     "name": "Web3 Glossary",
     "subtitle": "Crypto terms, explained fast",
     "description": "Concise English glossary for crypto/web3.",
-    "homeUrl": "https://YOUR-PRODUCTION-URL",
-    "iconUrl": "https://YOUR-PRODUCTION-URL/icon.png",
-    "splashImageUrl": "https://YOUR-PRODUCTION-URL/splash.png",
+    "homeUrl": "https://web3-glossary-miniapp-bdr3.vercel.app",
+    "iconUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/icon.png",
+    "splashImageUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
     "primaryCategory": "education",
     "tags": [
@@ -19,10 +19,10 @@
       "crypto",
       "glossary"
     ],
-    "heroImageUrl": "https://YOUR-PRODUCTION-URL/og.png",
+    "heroImageUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/og.png",
     "ogTitle": "Web3 Glossary",
     "ogDescription": "Fast definitions for crypto terms.",
-    "ogImageUrl": "https://YOUR-PRODUCTION-URL/og.png",
+    "ogImageUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/og.png",
     "noindex": true
   }
 }
