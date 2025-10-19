@@ -1,12 +1,15 @@
 import { TERMS } from "@/lib/terms";
 
-export default function Head({ params }: { params: { slug: string } }) {
-  const t = TERMS.find((x) => x.slug === params.slug);
+type HeadParams = Promise<{ slug: string }>;
+
+export default async function Head({ params }: { params: HeadParams }) {
+  const { slug } = await params;
+  const term = TERMS.find((x) => x.slug === slug);
   const embed = {
     version: "1",
     imageUrl: `${process.env.NEXT_PUBLIC_URL}/og.png`,
     button: {
-      title: `View ${t?.term ?? "Term"}`,
+      title: `View ${term?.term ?? "Term"}`,
       action: {
         type: "launch_frame",
         name: "Web3 Glossary",
@@ -14,5 +17,6 @@ export default function Head({ params }: { params: { slug: string } }) {
       },
     },
   };
+
   return <meta name="fc:miniapp" content={JSON.stringify(embed)} />;
 }
