@@ -58,3 +58,9 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.share-feedback {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #91d3ff;
+}

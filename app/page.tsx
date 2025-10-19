@@ -3,16 +3,24 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { TERMS } from "@/lib/terms";
+import { shareFallback } from "@/lib/share";
 import { useMiniKit, useComposeCast } from "@coinbase/onchainkit/minikit";
 
 export default function HomePage() {
   const [q, setQ] = useState("");
+  const [shareFeedback, setShareFeedback] = useState<string | null>(null);
   const { setFrameReady, isFrameReady } = useMiniKit();
-  const { composeCast } = useComposeCast();
+  const { composeCastAsync } = useComposeCast();
 
   useEffect(() => {
     if (!isFrameReady) setFrameReady();
   }, [isFrameReady, setFrameReady]);
+
+  useEffect(() => {
+    if (!shareFeedback) return;
+    const timeout = window.setTimeout(() => setShareFeedback(null), 3000);
+    return () => window.clearTimeout(timeout);
+  }, [shareFeedback]);
 
   const results = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -24,11 +32,29 @@ export default function HomePage() {
     });
   }, [q]);
 
-  const shareApp = () =>
-    composeCast({
-      text: "Web3 Glossary - concise crypto terms",
-      embeds: [typeof window !== "undefined" ? window.location.href : ""],
-    });
+  const shareApp = async () => {
+    const shareUrl =
+      typeof window !== "undefined" ? window.location.href : undefined;
+
+    try {
+      await composeCastAsync({
+        text: "Web3 Glossary - concise crypto terms",
+        embeds: shareUrl ? [shareUrl] : [],
+      });
+      setShareFeedback("Cast composer opened in Farcaster.");
+    } catch {
+      const message = await shareFallback({
+        url: shareUrl,
+        title: "Web3 Glossary",
+        text: "Web3 Glossary - concise crypto terms",
+      });
+      setShareFeedback(message);
+    }
+  };
+
+  const handleShareClick = () => {
+    void shareApp();
+  };
 
   return (
     <main className="container">
@@ -46,7 +72,12 @@ export default function HomePage() {
           </li>
         ))}
       </ul>
-      <button onClick={shareApp}>Share App</button>
+      <button onClick={handleShareClick}>Share App</button>
+      {shareFeedback ? (
+        <p className="share-feedback" role="status">
+          {shareFeedback}
+        </p>
+      ) : null}
     </main>
   );
 }
