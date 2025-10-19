@@ -4,6 +4,9 @@
     "payload": "",
     "signature": ""
   },
+  "baseBuilder": {
+    "allowedAddresses": []
+  },
   "miniapp": {
     "version": "1",
     "name": "Web3 Glossary",
@@ -20,9 +23,10 @@
       "glossary"
     ],
     "heroImageUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/og.png",
+    "tagline": "Web3 terms at a glance",
     "ogTitle": "Web3 Glossary",
     "ogDescription": "Fast definitions for crypto terms.",
     "ogImageUrl": "https://web3-glossary-miniapp-bdr3.vercel.app/og.png",
-    "noindex": true
+    "noindex": false
   }
 }
