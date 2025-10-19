@@ -1,0 +1,28 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Web3 Glossary",
+    "subtitle": "Crypto terms, explained fast",
+    "description": "Concise English glossary for crypto/web3.",
+    "homeUrl": "https://YOUR-PRODUCTION-URL",
+    "iconUrl": "https://YOUR-PRODUCTION-URL/icon.png",
+    "splashImageUrl": "https://YOUR-PRODUCTION-URL/splash.png",
+    "splashBackgroundColor": "#000000",
+    "primaryCategory": "education",
+    "tags": [
+      "web3",
+      "crypto",
+      "glossary"
+    ],
+    "heroImageUrl": "https://YOUR-PRODUCTION-URL/og.png",
+    "ogTitle": "Web3 Glossary",
+    "ogDescription": "Fast definitions for crypto terms.",
+    "ogImageUrl": "https://YOUR-PRODUCTION-URL/og.png",
+    "noindex": true
+  }
+}
